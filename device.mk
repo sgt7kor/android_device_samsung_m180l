@@ -38,12 +38,12 @@
 # These is the hardware-specific overlay, which points to the location
 # of hardware-specific resource overrides, typically the frameworks and
 # application settings that are stored in resourced.
-DEVICE_PACKAGE_OVERLAYS := device/samsung/p1_m180l/overlay
+DEVICE_PACKAGE_OVERLAYS := device/samsung/m180l/overlay
 
 # Init files
 PRODUCT_COPY_FILES := \
-    device/samsung/p1_m180l/init.p1_m180l.rc:root/init.p1_m180l.rc \
-    device/samsung/p1_m180l/ueventd.p1_m180l.rc:root/ueventd.p1_m180l.rc
+    device/samsung/m180l/init.m180l.rc:root/init.m180l.rc \
+    device/samsung/m180l/ueventd.m180l.rc:root/ueventd.m180l.rc
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -51,11 +51,11 @@ PRODUCT_COPY_FILES += \
 
 # vold
 PRODUCT_COPY_FILES += \
-    device/samsung/p1_m180l/vold.fstab:system/etc/vold.fstab
+    device/samsung/m180l/vold.fstab:system/etc/vold.fstab
 
 #NVRAM setup
 PRODUCT_COPY_FILES += \
-        device/samsung/p1_m180l/nvram_net.txt:system/vendor/firmware/nvram_net.txt
+        device/samsung/m180l/nvram_net.txt:system/vendor/firmware/nvram_net.txt
 
 # LG U+ cdma stuff
 PRODUCT_PROPERTY_OVERRIDES := \
@@ -78,7 +78,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
 
 # APNs for 3G network access
 PRODUCT_COPY_FILES += \
-    device/samsung/p1_m180l/apns-conf.xml:system/etc/apns-conf.xml
+    device/samsung/m180l/apns-conf.xml:system/etc/apns-conf.xml
 
 # keep dalvik cache on /data
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -91,4 +91,4 @@ $(call inherit-product, device/samsung/p1_kor/device_base.mk)
 # half of the device-specific product definition file takes care
 # of the aspects that require proprietary drivers that aren't
 # commonly available
-$(call inherit-product-if-exists, vendor/samsung/p1_m180l/p1_m180l-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/m180l/m180l-vendor.mk)

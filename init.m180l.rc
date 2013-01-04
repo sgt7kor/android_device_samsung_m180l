@@ -1,0 +1,36 @@
+import init.p1-common.rc
+import init.p1.usb.rc
+
+on init
+    export EXTERNAL_STORAGE /storage/sdcard0
+    mkdir /storage 0050 system sdcard_r
+    mkdir /storage/sdcard0 0000 system system
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
+
+on boot
+
+    setprop ro.build.product m180l
+    setprop ro.product.device m180l
+
+on fs
+    mount_all /fstab.m180l
+
+service pppd_cdma /system/bin/pppd_runner
+   class main
+   user root
+   group radio cache inet misc system
+   disabled
+   oneshot
+
+service gps-daemon /system/vendor/bin/gpsd
+    class main
+    user system
+    group system inet
+
+on property:ril.cdma.data_state=1
+    restart pppd_cdma
+
+on property:ril.cdma.data_state=0
+    stop pppd_cdma
+

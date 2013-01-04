@@ -26,4 +26,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_p1_m180l.mk
+    $(LOCAL_DIR)/full_m180l.mk
